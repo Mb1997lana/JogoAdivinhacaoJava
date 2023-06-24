@@ -5,29 +5,34 @@ public class Adivinhacao {
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
         int numSecreto = new Random().nextInt(100);
+        int numTentativas = 0;
 
         System.out.println ("Bem Vindo ao nosso Jogo de Adivinhação!!");
 
-    for (int numTentativas = 1; numTentativas <= 5; numTentativas++) {
+    while (numTentativas < 5) {
 
-        System.out.println (String.format ("Tentativa %d de 5", numTentativas) );
-        System.out.println ("Qual é o seu chute?");
-        int chute = leitor.nextInt();
+            System.out.println (String.format ("Tentativa %d de 5", numTentativas + 1) );
+            System.out.println ("Qual é o seu chute?");
+            int chute = leitor.nextInt();
+            numTentativas++;
 
-        if (chute > numSecreto) {
-            System.out.println ("Seu chute é maior que o número secreto. Tente novamente.");
-        } else {
-            System.out.println ("Seu chute é menor que o número secreto. Tente novamente!");
+            if (chute == numSecreto) {
+                System.out.println (String.format ("Parabéns! Você acertou em %d tentativas.", numTentativas) );
+                break;
+            } else if (chute > numSecreto) {
+                System.out.println ("Seu chute é maior que o número secreto! Tente novamente");
+            } else {
+                System.out.println ("Seu chute é menor que o número secreto! Tente novamente.");
             }
-        if (chute == numSecreto) {
-            System.out.println ("Parabéns! Você acertou!");
-            break;
-        }
 
         }
+    if (numTentativas == 5) {
+        System.out.println ("Game Over!");
+    }
     }
 }
 
+// Código do instrutor da Alura.
 /*public class JogoAdivinhacao {
 
     public static void main(String[] args) {
